@@ -119,3 +119,8 @@ CACHES = {
         'LOCATION': '127.0.0.1:11211',
     }
 }
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
