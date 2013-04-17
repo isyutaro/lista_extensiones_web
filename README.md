@@ -1,4 +1,3 @@
-# This is my README
 Lista de extensiones v0.1
 
 Requerimientos sistema:
