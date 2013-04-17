@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+    <div id="content" align=center>
+	<div class="titulo">
+		<h2>Extensiones Interalia</h2>
+	</div>
+	<form class="searchform">
+		<input class="searchfield" type="text" name="qbusca" maxlength="50" id="qbusca" value="Buscar..." onfocus="if (this.value == 'Buscar...') {this.value = '';}" onblur="if (this.value == '') {this.value = '';}" />
+		<input class="searchbutton" type="submit" value="Buscar" />
+	</form>
+	<table id="tabla_extensiones" summary="Extensiones Interalia" class="tabla">	
+	
+	<tfoot>
+    	<tr>
+		<td colspan="2" class="rounded-foot-left"></td>
+        	<td class="rounded-foot-right"></td>
+
+        </tr>
+
+    </tfoot>
+	<tbody>
+	{% if not ext %}
+		<thead>
+        <tr>
+            <th scope="col" class="rounded-q1"/>
+            <th scope="col" class="rounded-q2">No se encontraron resultados</th>
+            <th scope="col" class="rounded-q3"/>
+        </tr>
+        </thead>
+	{% else %}
+		{% for depa in dep %}
+			<thead>
+			<tr>
+				<th scope="col" class="rounded-q1"/>
+				<th scope="col" class="rounded-q2">{{ depa }}</th>
+				<th scope="col" class="rounded-q3"/>
+			</tr>
+			</thead>
+		
+			{% for nombre in ext %}
+				{% if nombre.depto.nombre == depa.nombre %}
+					<td scope="col" class="interalio">{{ nombre.nombre }}</td>
+					<td scope="col" class="telefono">{{ nombre.telefono }}</td>
+					<td scope="col" class="extension">{{ nombre.extension }}</td>
+				{% else %}
+				{% endif %}
+				</tr>
+			{% endfor %}
+			</tr>
+		{% endfor %}
+	{% endif %}
+	</tbody>
+	<script
+               type="text/javascript"
+               language="javascript">
+               document.getElementById("qbusca").focus();
+	</script>
+    </div>
+{% endblock %}
